@@ -1,0 +1,24 @@
+{% include "header.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+<body>
+  <div class="container col-3">
+    {% if message == "Successfully Added Password" %}
+    <h1>{{message}}</h1>
+    {% else %}
+    <h1>Add a new password</h1>
+    {%endif%}
+    {{render_form(form, action="/add", button_style="outline-dark")}}
+  </div>
+</body>
+{% include "footer.html" %}
+
+<!-- I wrote this form without bootstrap and im proud of it.... one day maybe I bring
+it back once I shake off the yoke of the bootstrap.
+<form action="{{url_for('add')}}" method="post">
+        <div class="add_form">{{form.website.label}}</div> <div>{{form.website}}</div> <br>
+        <div class="add_form">{{form.email.label}}</div> <div>{{form.email}}</div> <br>
+        <div class="add_form">{{form.password.label}}</div> <div>{{form.password}}</div> <br>
+        {{form.submit}}
+    </form>
+-->
