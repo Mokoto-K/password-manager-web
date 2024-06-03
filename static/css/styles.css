@@ -6,3 +6,9 @@ body {
 .add_form {
  display: block;
 }
+
+##password_box {
+  display: inline-box;
+  float: left;
+
+}

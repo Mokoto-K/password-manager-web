@@ -1,12 +1,12 @@
 from wtforms import StringField, EmailField, PasswordField, SubmitField
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 # from sqlalchemy import String, Integer
-
+# TODO: Sort the passwords on the user page alphabetically
 class Base(DeclarativeBase):
     pass
 
@@ -19,6 +19,7 @@ app.config["SECRET_KEY"] = "qwerty"
 db.init_app(app)
 
 
+# TODO: Change the schema of the db and the form to have a confirm password field
 # TODO: Don't forget to handle the case of having two accounts for one website, it will cause unique error
 class Passwords(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -45,7 +46,7 @@ def home():
 
     return render_template("index.html", )
 
-
+# TODO: ADD a check to make sure the user isnt adding the same website twice, is unqiue will catch and crash
 @app.route('/add', methods=["GET", "POST"])
 def add():
     form = EntryForm()
@@ -59,6 +60,38 @@ def add():
         return render_template("add.html", message="Successfully Added Password", form=form)
     return render_template("add.html", form=form)
 
+
+@app.route("/user_profile")
+def user_profile():
+    passwords = db.session.scalars(db.select(Passwords)).all()
+    return render_template("user.html", passwords=passwords)
+
+# TODO: This can collapse into the "add" route instead by passing the id and having and "if id:" statement in add.
+@app.route("/edit", methods=["GET", "POST"])
+def edit():
+    # to protect against entering the edit url without an id
+    if request.args.get('id'):
+        entry = db.session.scalar((db.select(Passwords).where(Passwords.id == request.args.get('id'))))
+        form = EntryForm(
+            website=entry.website,
+            email=entry.email,
+            password=entry.password
+        )
+        if form.validate_on_submit():
+            entry.website = form.website.data
+            entry.email = form.email.data
+            entry.password = form.password.data
+            db.session.commit()
+            return redirect(url_for('user_profile'))
+        return render_template("edit.html", form=form)
+    return redirect(url_for("add"))
+
+
+@app.route("/delete")
+def delete():
+    db.session.delete(db.session.scalar((db.select(Passwords).where(Passwords.id == request.args.get('id')))))
+    db.session.commit()
+    return redirect(url_for("user_profile"))
 
 if __name__ == "__main__":
     app.run(debug=True)

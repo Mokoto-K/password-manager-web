@@ -1,0 +1,14 @@
+{% include "header.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+<body>
+  <div class="container col-3">
+    {% if message == "Successfully Added Password" %}
+    <h1>{{message}}</h1>
+    {% else %}
+    <h1>Add a new password</h1>
+    {%endif%}
+    {{render_form(form, button_style="outline-dark")}}
+  </div>
+</body>
+{% include "footer.html" %}

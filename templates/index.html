@@ -1,8 +1,28 @@
 {% include "header.html" %}
 
   <body>
-    <div class="container">
-        <a type="button" class="btn btn-outline-dark" href="{{url_for('add')}}">Add Password</a>
+
+    <div class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+      <h1 class="display-5 fw-bold text-body-emphasis">Mokoto Pass</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Mokoto Pass is a secure and user-friendly password manager that safely stores and organizes your passwords,
+          providing seamless access across all your devices. Simplify your digital life with advanced encryption
+          and automatic password filling, ensuring your online accounts are always protected.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <!-- I dont need to use these buttons for the moment, perhaps deleted shortly
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+          -->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container d-flex align-items-end flex-column mb-3 ">
+        <a type="button" class="btn btn-dark " href="{{url_for('add')}}">Add Password</a>
     </div>
 
   </body>

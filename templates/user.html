@@ -1,0 +1,22 @@
+{% include "header.html" %}
+<body>
+{% for entry in passwords%}
+<div class="container my-5 col-4">
+  <div class="p-5 text-center bg-body-tertiary rounded-3  mx-1 my-1" id="password_box">
+    <h1 class="text-body-emphasis">{{entry.website}}</h1>
+      <p class="lead">Email: {{entry.email}}</p>
+      <p class="lead">Password: {{entry.password}}</p>
+      <div class="container d-flex flex-column mb-3 ">
+        <a type="button" class="btn btn-outline-primary " href="{{url_for('edit', id=entry.id)}}">Edit</a>
+    </div>
+      <div class="container d-flex  flex-column mb-3 ">
+        <a type="button" class="btn btn-danger" href="{{url_for('delete', id=entry.id)}}">Delete</a>
+    </div>
+  </div>
+</div>
+{% endfor%}
+<div class="container d-flex align-items-end flex-column mb-3 ">
+        <a type="button" class="btn btn-dark" href="{{url_for('add')}}">Add Password</a>
+    </div>
+</body>
+{% include "footer.html" %}
