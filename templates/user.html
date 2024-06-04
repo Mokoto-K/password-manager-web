@@ -1,26 +1,23 @@
 {% include "header.html" %}
 <body>
-{% for entry in passwords%}
-<div class="container my-1 " id="user_container">
-  <div class="p-3 bg-body-tertiary rounded-3 mx-1 my-1 d-flex flex-xl-row flex-l-row flex-md-column flex-sm-column flex-column" id="password_box">
-    <div>
-      <h4 class="text-body-emphasis">{{entry.website}}</h4>
+  {% for entry in passwords%}
+    <div class="container my-1 " id="user_container">
+      <div class="p-3 bg-body-tertiary rounded-3 mx-1 my-1 d-flex flex-xl-row flex-l-row flex-md-column flex-sm-column flex-column" id="password_box">
+        <div>
+          <h4>{{entry.website}}</h4>
+        </div>
+        <div>
+          <p>Email: {{entry.email}}</p>
+        </div>
+        <div>
+          <p>Password: {{entry.password}}</p>
+        </div>
+        <div>
+          <a type="button" class="btn btn-outline-primary mb-1 " href="{{url_for('edit', id=entry.id)}}">Edit</a>
+          <a type="button" class="btn btn-danger mb-1" href="{{url_for('delete', id=entry.id)}}">Delete</a>
+        </div>
+      </div>
     </div>
-    <div>
-      <p>Email: {{entry.email}}</p>
-    </div>
-    <div>
-        <p>Password: {{entry.password}}</p>
-    </div>
-
-    <div>
-        <a type="button" class="btn btn-outline-primary mb-1 " href="{{url_for('edit', id=entry.id)}}">Edit</a>
-        <a type="button" class="btn btn-danger mb-1" href="{{url_for('delete', id=entry.id)}}">Delete</a>
-    </div>
-  </div>
-</div>
-{% endfor%}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<div></div>
+  {% endfor%}
 </body>
 {% include "footer.html" %}

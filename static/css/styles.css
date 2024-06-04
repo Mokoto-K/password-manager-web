@@ -13,12 +13,13 @@
 }
 
 #password_box {
-  display: inline-flex;
+  display: grid
+  grid-template-columns: 1fr 2fr 2fr 1fr;
   flex-basis: 100%;
   align-items: center;
+
 }
 
 #password_box > * {
     flex-basis: 100%;
-    justify-self: start;
 }

@@ -7,7 +7,7 @@ from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 # from sqlalchemy import String, Integer
 
-#  dont know if bootstrap and css fix is possible..
+# TODO: Add confirm password on add and edit screen
 # TODO: Sort the passwords on the user page alphabetically
 class Base(DeclarativeBase):
     pass
