@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" />
     {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" />
     <title>Password Manager</title>
 
  <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between  border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-          <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+          <img class="d-block mx-2" src="{{url_for('static', filename='assets/images/mk-logo-copy.png')}}" alt="eyes" height="100">
         </a>
       </div>
       <!-- Dont think ill use this, just wwont delete it yet
@@ -22,12 +22,12 @@
         <li><a href="#" class="nav-link px-2">About</a></li>
       </ul> -->
 
-      <div class="col-md-3 text-end">
+      <div class=" text-end">
           <a type="button" class="btn btn-dark" href="{{url_for('home')}}">Home</a>
-        <a type="button" class="btn btn-outline-dark me-2" href="{{url_for('user_profile')}}">Passwords</a>
-        <button type="button" class="btn btn-dark">Sign-up</button>
+          <a type="button" class="btn btn-dark" href="{{url_for('add')}}">Add Password</a>
+        <a type="button" class="btn btn-outline-dark" href="{{url_for('manage_passwords')}}">Manage Passwords</a>
+         <!-- <button type="button" class="btn btn-dark">Sign-up</button> -->
       </div>
     </header>
   </div>
 
-</head>

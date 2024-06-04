@@ -8,6 +8,11 @@
     {% else %}
     <h1>Add a new password</h1>
     {%endif%}
+
+    {% for message in get_flashed_messages() %}
+    <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+
     {{render_form(form, button_style="outline-dark")}}
   </div>
 </body>
