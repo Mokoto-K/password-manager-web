@@ -1,5 +1,5 @@
 #body {
-  background-color: black;
+  background-color: #121212;
   color: white;
 }
 
@@ -13,10 +13,10 @@
 }
 
 #password_box {
-  display: grid
-  grid-template-columns: 1fr 2fr 2fr 1fr;
+  display: flex;
   flex-basis: 100%;
   align-items: center;
+
 
 }
 

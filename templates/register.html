@@ -1,0 +1,15 @@
+{% include "header.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+<body>
+  <div class="container col-4">
+      <h1>Register</h1>
+    {% for message in get_flashed_messages() %}
+      <p style="color: red;">{{ message }}</p>
+   {% endfor %}
+   {{ render_form(form, button_style="outline-light") }}
+  </div>
+
+</body>
+
+{% include "footer.html" %}
