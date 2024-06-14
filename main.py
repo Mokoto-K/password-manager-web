@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Length
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
-# from sqlalchemy import String, Integer
+from sqlalchemy import String, Integer
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 from datetime import datetime as dt
 
